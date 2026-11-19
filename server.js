@@ -38,6 +38,7 @@ app.get("/alunos/:id", (req, res) => {
             mensagem: "Aluno não encontrado."
         });
     }
+    res.status(200).json(aluno);
 
 })
 
@@ -89,7 +90,6 @@ app.put("/aluno/:id", (req, res) => {
         email,
         turma
     };
-
     res.status(200).json(alunos[indice]);
 });
 
@@ -108,3 +108,8 @@ app.delete("/aluno/:id", (req, res) => {
     alunos = alunos.filter(a => a.id !== id);
     res.status(204).send();
 });
+
+// iniciar servidor
+app.listen(PORT, () => {
+    console.log(`API executando em http://localhost:${PORT}`);
+})
